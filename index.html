@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta property="og:title" content="ByteSploit">
+  <meta property="og:description" content="ByteSploit Is A Collection Of Byte Wizard's Public Projects Ranging From Useful Software To Pentesting Tools To Web Apps.">
+  <meta property="og:image" content="https://i.imgur.com/AMayWfn_d.webp?maxwidth=760&fidelity=grand">
+  <meta property="og:url" content="https://byt3w1z4rd.github.io">
+  <meta property="og:type" content="website">
+  <title>ByteSploit</title>
+  <link rel="icon" href="https://i.imgur.com/AMayWfn_d.webp?maxwidth=760&fidelity=grand" type="image/png">
+  <style type="text/css">
+    body {
+      background: #202020;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 80%;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: #9000ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 48px;
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    h1::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      color: #fff;
+      overflow: hidden;
+      z-index: -1;
+      text-shadow: 0 0 10px #9000ff;
+    }
+
+    h1::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      color: #9000ff;
+      overflow: hidden;
+      z-index: -1;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    h1:hover::before {
+      animation: glitch-anim 0.3s linear infinite;
+    }
+
+    h1:hover::after {
+      animation: glitch-anim-reverse 0.3s linear infinite;
+    }
+
+    .classh1 {
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0px;
+      font-size: 8vw;
+      font-weight: 900;
+      text-decoration: none;
+      color: white;
+      display: inline-block;
+      background-size: 120% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-background-clip: text;
+      -moz-text-fill-color: transparent;
+      -ms-background-clip: text;
+      -ms-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      background-image: linear-gradient(45deg, #9000ff, #9880ff);
+      animation: .8s glitch infinite alternate;
+      text-shadow: 0px 0px 20px #9000ff;
+    }
+
+    @keyframes glitch {
+      0% {
+        transform: skewX(0deg);
+      }
+
+      5% {
+        transform: skewX(0deg);
+      }
+
+      10% {
+        transform: skewX(-10deg);
+      }
+
+      15% {
+        transform: skewX(10deg);
+      }
+
+      20% {
+        transform: skewX(-15deg);
+      }
+
+      25% {
+        transform: skewX(15deg);
+      }
+
+      30% {
+        transform: skewX(-20deg);
+      }
+
+      35% {
+        transform: skewX(20deg);
+      }
+
+      40% {
+        transform: skewX(0deg);
+      }
+
+      45% {
+        transform: skewX(0deg);
+      }
+
+      50% {
+        transform: skewX(0deg);
+      }
+
+      55% {
+        transform: skewX(0deg);
+      }
+
+      60% {
+        transform: skewX(0deg);
+      }
+
+      65% {
+        transform: skewX(-15deg);
+      }
+
+      70% {
+        transform: skewX(15deg);
+      }
+
+      75% {
+        transform: skewX(-20deg);
+      }
+
+      80% {
+        transform: skewX(20deg);
+      }
+
+      85% {
+        transform: skewX(0deg);
+      }
+
+      90% {
+        transform: skewX(0deg);
+      }
+
+      95% {
+        transform: skewX(0deg);
+      }
+
+      100% {
+        transform: skewX(0deg);
+      }
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #9000ff;
+      padding-bottom: 10px;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-top: 0;
+    }
+
+    .project {
+      border: 2px solid #9000ff;
+      padding: 20px;
+      margin-bottom: 40px;
+      background: #181818;
+      border-radius: 20px;
+    }
+
+    .project:hover {
+      box-shadow: 0px 0px 30px #9000ff;
+    }
+
+    .project h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #9000ff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn:hover {
+      background-color: #fff;
+      color: #9000ff;
+      border: 2px solid #9000ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="classh1">Byte Wizard's Projects</h1>
+    <div class="project">
+      <h3>Media Database</h3>
+      <p>A web-based application for all your cinema needs. It allows you to find information on your favourite movies and shows as well as watch them for free.</p>
+      <a href="./movies" class="btn">Learn More</a>
+    </div>
+    <div class="project">
+      <h3>Exploit Wizard</h3>
+      <p>An advanced tool for creating exploit payloads from the commandline. It is very useful for red team pentesting engagements social engineer and bypass antivirus.</p>
+      <a href="https://github.com/BYT3W1Z4RD/exploit-wizard" class="btn">Learn More</a>
+    </div>
+    <div class="project">
+      <h3>Antimalware Scanner</h3>
+      <p>An advanced tool for scanning and removing malware from your computer. It uses advanced static heuristic analysis but also runtime sandbox detection.</p>
+      <a href="https://github.com/BYT3W1Z4RD/antivirus-scanner" class="btn">Learn More</a>
+    </div>
+  </div>
+</body>
+</html>
