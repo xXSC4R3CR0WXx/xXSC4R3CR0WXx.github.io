@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta property="og:title" content="Nebula Music">
+  <meta property="og:description" content="Nebula Is The Biggest Library Of High Quality Music Online. 100% Free With No Ads and No Account Signup Required.">
+  <meta property="og:image" content="https://i.imgur.com/NMJlXwk_d.webp?maxwidth=760&fidelity=grand">
+  <meta property="og:url" content="https://byt3w1z4rd.github.io/music">
+  <meta property="og:type" content="website">
+  <title>Nebula Music</title>
+  <link rel="icon" href="https://i.imgur.com/NMJlXwk_d.webp?maxwidth=760&fidelity=grand" type="image/png">
+  <style>
+    #sidebar-arrow {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100%;
+      background-color: #373737;
+      color: #fff;
+      transform: translateX(-90%);
+      transition: transform 0.3s ease-in-out;
+      padding: 2%;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    #sidebar.show {
+      transform: translateX(0);
+    }
+
+    #sidebar h2 {
+      font-size: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #444;
+    }
+
+    #sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #sidebar li {
+      margin: 0px 0;
+    }
+
+    #sidebar a {
+      display: block;
+      padding: 5px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #fff;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    #sidebar a:hover {
+      background-color: #fff;
+      color: #333;
+    }
+
+    #content {
+      margin-left: 0px;
+      padding: 15px;
+    }
+
+    #content h1 {
+      font-size: 2.5rem;
+      margin-top: 0px;
+      margin-bottom: 20px;
+    }
+
+    #content p {
+      font-size: 1.25rem;
+      line-height: 1.5px;
+      margin-bottom: 20px;
+    }
+
+    html, body {
+      height: 100%;
+      margin-left: 20px;
+      margin-right: 5px;
+      padding: 0;
+      background-color: #1a1a1a;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      margin-bottom: 30px;
+      max-width: 600px;
+      padding: 20px;
+      margin: 0 auto;
+      background-color: #333;
+      border-radius: 5px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      margin-right: 10px;
+      padding: 10px;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px 0 0 5px;
+      background-color: #282828;
+      color: #fff;
+    }
+
+    button[type="submit"] {
+      padding: 10px;
+      background-color: #1db954;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #1ed760;
+    }
+
+    #results {
+      margin: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 380px;
+    }
+
+    iframe {
+      border: none;
+    }
+  </style>
+<body>
+  <div id="sidebar">
+    <h2>Nebula Media</h2>
+    <ul>
+      <li>
+        <a href="#" onclick="showDesign('movies')">Movies</a>
+      </li>
+      <li>
+        <a href="#" onclick="showDesign('shows')">Shows</a>
+      </li>
+      <li>
+        <a href="#" onclick="showDesign('music')">Music</a>
+      </li>
+    </ul>
+    <div id="sidebar-arrow">&gt;</div>
+  </div>
+  <div>
+    <h1>Nebula Music Player</h1>
+    <form onsubmit="searchSong(); return false;">
+      <input type="text" id="search" placeholder="Enter song name or playlist URL">
+      <button type="submit">Search</button>
+    </form>
+    <div id="results"></div>
+  </div>
+  <script>
+    var sidebar = document.getElementById("sidebar");
+    sidebar.addEventListener("mouseenter", function() {
+      sidebar.classList.add("show");
+    });
+    sidebar.addEventListener("mouseleave", function() {
+      sidebar.classList.remove("show");
+    });
+    // Show/hide sidebar on swipe
+    var initialX = null;
+    var sensitivityThreshold = 25; // Adjust this value to change sensitivity
+    document.addEventListener("touchstart", function(event) {
+      initialX = event.touches[0].clientX;
+    }, false);
+    document.addEventListener("touchmove", function(event) {
+      if(initialX === null) {
+        return;
+      }
+      var currentX = event.touches[0].clientX;
+      var diffX = initialX - currentX;
+      if(diffX > sensitivityThreshold) { // swipe left
+        sidebar.classList.remove("show");
+      } else if(diffX < -sensitivityThreshold) { // swipe right
+        sidebar.classList.add("show");
+      }
+      initialX = null;
+    }, false);
+    var moviesLink = document.querySelector("#sidebar ul li:nth-of-type(1) a");
+    var showsLink = document.querySelector("#sidebar ul li:nth-of-type(2) a");
+    var musicLink = document.querySelector("#sidebar ul li:nth-of-type(3) a");
+    moviesLink.addEventListener("click", function() {
+      window.location.href = "movies";
+    });
+    showsLink.addEventListener("click", function() {
+      window.location.href = "shows";
+    });
+    musicLink.addEventListener("click", function() {
+      window.location.href = "music";
+    });
+    function searchSong() {
+      const searchInput = document.getElementById('search').value;
+      const accessToken = 'BQB8ykhkxfsSaY2XJ1s8SAJ_q1vr557VgALuCfGzrwbfQrlacIFPFSjPzB7oKWbi7WyNBZTs2XsbKFD-Rr-dcUeeeGFPc0H3XHzl7jR5NP_u8rMoAOIvODd2oFJ0D5e5UFVOhkJrC9CbwafymY0BLXlxaprG0fSh5g4d28AukK4CQyxCkN5oplRvYC8tGqqYySc7PphKmY0JUrNGbUZ8nvK35mzOhxPjHk3k9hgwNZo5-3LUygFPqDQ760SZv_xT00uSoezaUy9YU84Vz4fECAllfQKHNUtVPVzgqhjHY5KsiDIMsUx-r2LOmryzQVtPargbxz2bdlPyxAXlPlKL6RSDBSlvmZIbnSzGOb4Kz1s';
+      if(searchInput.includes('https://open.spotify.com/playlist/')) {
+        const playlistId = searchInput.split('playlist/')[1].split('?')[0];
+        fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+          headers: {
+            'Authorization': 'Bearer ' + accessToken
+          }
+        }).then(response => response.json()).then(data => {
+          let iframeHtml = '<iframe src="https://open.spotify.com/embed/playlist/';
+          iframeHtml += `${playlistId}" width="43%" height="550px" frameborder="0" allowtransparency="true" allowautoplay="true" allowclipboardwrite="true" allowfullscreen="true" allowpicture-in-picture="true" allow="encrypted-media"></iframe>`;
+          const results = document.getElementById('results');
+          results.innerHTML = iframeHtml;
+        }).catch(error => {
+          console.error('Error:', error);
+        });
+      } else {
+        const url = `https://api.spotify.com/v1/search?q=${searchInput}&type=track`;
+        fetch(url, {
+          headers: {
+            'Authorization': 'Bearer ' + accessToken
+          }
+        }).then(response => response.json()).then(data => {
+          const results = document.getElementById('results');
+          results.innerHTML = '';
+          if(data.tracks && data.tracks.items.length > 0) {
+            const tracks = data.tracks.items;
+            const list = document.createElement('ul');
+            list.style.display = 'flex';
+            list.style.flexWrap = 'wrap';
+            list.style.justifyContent = 'center';
+            list.style.alignItems = 'center';
+            list.style.listStyle = 'none';
+            tracks.forEach(track => {
+              const trackUrl = track.external_urls.spotify;
+              const listItem = document.createElement('li');
+              const iframeHtml = `<iframe src="https://open.spotify.com/embed/track/${track.id}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+              listItem.style.width = '20%';
+              listItem.style.margin = '10px';
+              listItem.style.textAlign = 'center';
+              listItem.innerHTML = iframeHtml;
+              list.appendChild(listItem);
+            });
+            results.appendChild(list);
+          } else {
+            results.innerHTML = 'No tracks found';
+          }
+        }).catch(error => {
+          console.error('Error:', error);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
