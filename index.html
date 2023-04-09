@@ -233,21 +233,31 @@
   </body>
     </body>
 </div>
-  <div style="width:100%; overflow-x:auto; white-space:nowrap; position:fixed; bottom:0; background-color:#f2f2f2; padding:10px;">
-  <h3 style="display:inline-block; margin-right:10px;">Latest Movie Releases:</h3>
-  <ul id="movieList" style="display:inline-block; margin:0;">
-    <li>Movie 1</li>
-    <li>Movie 2</li>
-    <li>Movie 3</li>
-  </ul>
+
+  <div class="scroll-container">
+  <div class="scroll-wrapper">
+    <img src="https://upload.wikimedia.org/wikipedia/en/a/ac/Ghostface.jpg" alt="Slasher 1">
+    <img src="https://media1.popsugar-assets.com/files/thumbor/2tEi5wR8gbO8ztUNn94QFMkpphs/fit-in/728xorig/filters:format_auto-!!-:strip_icc-!!-/2016/10/03/019/n/1922283/cdb96f1a_MSDNION_EC014_H/i/Freddy-Krueger-From-Nightmare-Elm-Street.JPG" alt="Slasher 2">
+    <img src="https://upload.wikimedia.org/wikipedia/en/f/f7/Jason_Voorhees_%28Ken_Kirzinger%29.jpg" alt="Slasher 3">
+    <img src="slasher4.jpg" alt="Slasher 4">
+    <img src="slasher5.jpg" alt="Slasher 5">
+    <img src="slasher6.jpg" alt="Slasher 6">
+    <img src="slasher7.jpg" alt="Slasher 7">
+    <img src="slasher8.jpg" alt="Slasher 8">
+    <img src="slasher9.jpg" alt="Slasher 9">
+  
+    .scroll-container {
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.scroll-wrapper {
+  display: inline-block;
+}
+    </div>
 </div>
 
-<script>
-  // Example code to update the movie list every 5 seconds
-  setInterval(function() {
-    var movieList = document.getElementById("movieList");
-    movieList.innerHTML = "<li>New Movie 1</li><li>New Movie 2</li><li>New Movie 3</li>";
-  }, 5000);
-</script>
 
 </html>
