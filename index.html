@@ -233,4 +233,21 @@
   </body>
     </body>
 </div>
+  <div style="width:100%; overflow-x:auto; white-space:nowrap; position:fixed; bottom:0; background-color:#f2f2f2; padding:10px;">
+  <h3 style="display:inline-block; margin-right:10px;">Latest Movie Releases:</h3>
+  <ul id="movieList" style="display:inline-block; margin:0;">
+    <li>Movie 1</li>
+    <li>Movie 2</li>
+    <li>Movie 3</li>
+  </ul>
+</div>
+
+<script>
+  // Example code to update the movie list every 5 seconds
+  setInterval(function() {
+    var movieList = document.getElementById("movieList");
+    movieList.innerHTML = "<li>New Movie 1</li><li>New Movie 2</li><li>New Movie 3</li>";
+  }, 5000);
+</script>
+
 </html>
